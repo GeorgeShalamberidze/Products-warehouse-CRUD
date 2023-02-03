@@ -1,4 +1,5 @@
 <?php
+require_once("./src/Validator.php");
 
 class ProductController {
     private $product;
@@ -14,14 +15,13 @@ class ProductController {
         switch ($method) {
             case "GET":
                 echo json_encode($this->product->getProducts());
+                http_response_code(200);
                 break;
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
+                new Validator($data);
                 http_response_code(201);
                 $this->product->createProduct($data);
-                echo json_encode([
-                    "message" => "Product Was Created Successfully",
-                ]);
                 break;
             case "DELETE":
                 $idArr = json_decode(file_get_contents("php://input"), true);

@@ -1,0 +1,8 @@
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods: "*"
+Header set Access-Control-Allow-Credentials true
+
+Options -MultiViews
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [QSA,L]

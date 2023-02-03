@@ -1,4 +1,6 @@
 <?php
+require_once("./src/config/database.php");
+require_once("constants.php");
 abstract class Query {
     private $query = "";
     private $data = array();
@@ -72,8 +74,7 @@ abstract class Query {
         {
             case 'integer': return 1;
             case 'string': return 2;
-            default:
-                return 2;
+            default: return 2;
         }
     }
 }
