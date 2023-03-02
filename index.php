@@ -1,8 +1,6 @@
 <?php
-define('DOC_ROOT_PATH', $_SERVER['DOCUMENT_ROOT'].'/');
-require "./src/Product.php";
-require "./src/ProductController.php";
-require "./src/HandleError.php";
+require_once realpath("vendor/autoload.php");
+use App\controller\ProductController;
 
 if (
     isset( $_SERVER['REQUEST_METHOD'] )
@@ -15,9 +13,6 @@ if (
     exit( 0 );
   }
 
-set_error_handler("HandleError::errorExeptionHandle");
-set_exception_handler("HandleError::errorHandle");
-
-$product = new Product();
-$controller= new ProductController($product);
-$controller->processRequest($_SERVER["REQUEST_METHOD"]);
+$methodOption = $_SERVER["REQUEST_METHOD"];
+$controller= new ProductController();
+$controller->processRequest($methodOption);

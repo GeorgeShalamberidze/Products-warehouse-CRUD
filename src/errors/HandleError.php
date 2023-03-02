@@ -1,4 +1,6 @@
 <?php
+namespace App\errors;
+use ErrorException;
 
 class HandleError {
     public static function errorHandle ($exeption) {

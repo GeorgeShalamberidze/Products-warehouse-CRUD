@@ -1,4 +1,8 @@
 <?php
+namespace App\config;
+use PDO;
+use PDOException;
+
 class Database {
     private $host;
     private $dbname;
